@@ -8,24 +8,28 @@ class ContainerBox extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      userSpendInputFromForm: null,
       userTurnoverInputFromForm: null,
+      userSpendInputFromForm: null,
     }
+    this.handleUserTurnoverInput = this.handleUserTurnoverInput.bind(this);
+    this.handleUserSpendInput = this.handleUserSpendInput.bind(this);
   }
 
   handleUserTurnoverInput(event){
     const userTurnoverInput = event.target.user_turnover_input.value;
-    console.log(userTurnoverInput);
+    this.setState({userTurnoverInputFromForm: userTurnoverInput});
+
   }
 
   handleUserSpendInput(event){
   const userEnergyInput = event.target.user_energy_input.value;
-  console.log(userEnergyInput);
-  // this.setState({userSpendInputFromForm: userEnergyInput});
+  this.setState({userSpendInputFromForm: userEnergyInput});
 }
 
 
   render(){
+    console.log(this.state.userTurnoverInputFromForm);
+    console.log(this.state.userSpendInputFromForm);
     return(
       <div className='container-box-contents'>
         <FormView
