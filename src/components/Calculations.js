@@ -4,8 +4,6 @@ class Calculations extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      energySpend: 10000,
-      turnover: 1000000,
     };
     this.getElectricitySpend = this.getElectricitySpend.bind(this);
     this.getGasSpend = this.getGasSpend.bind(this);
@@ -20,12 +18,12 @@ class Calculations extends React.Component {
   }
 
   getElectricitySpend() {
-    const electricitySpend = this.state.energySpend * 0.3;
+    const electricitySpend = this.props.energySpend * 0.3;
     return electricitySpend;
   }
 
   getGasSpend() {
-    const gasSpend = this.state.energySpend * 0.7;
+    const gasSpend = this.props.energySpend * 0.7;
     return gasSpend;
   }
 
@@ -65,18 +63,19 @@ class Calculations extends React.Component {
   }
 
   getTotalTCO2eOverPerThousandTurnover() {
-    const turnoverThousands = this.state.turnover / 1000;
+    const turnoverThousands = this.props.turnover / 1000;
     const totalTCO2eOverTurnover = this.getTotalTCO2eYear() / turnoverThousands;
     return totalTCO2eOverTurnover
   }
 
 
     render() {
-
+      console.log(this.props.turnover);
+      console.log(this.props.energySpend);
       return(
         <div>
-          <p>energy Spend: {this.state.energySpend}</p>
-          <p>turnover: {this.state.turnover}</p>
+          <p>energy Spend: {this.props.energySpend}</p>
+          <p>turnover: {this.props.turnover}</p>
           <p>electricity Spend: {this.getElectricitySpend()}</p>
           <p>gas Spend: {this.getGasSpend()}</p>
           <p>electricity KWh per Year: {this.getElectricityKWhYear()}</p>

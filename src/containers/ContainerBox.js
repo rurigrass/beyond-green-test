@@ -1,7 +1,7 @@
 import React from "react";
 import Calculations from '../components/Calculations';
 import FormView from '../components/FormView';
-import GraphComponent from '../components/GraphComponent.js';
+// import Co2GraphComponent from '../components/Co2GraphComponent.js';
 
 class ContainerBox extends React.Component {
 
@@ -22,19 +22,21 @@ class ContainerBox extends React.Component {
   }
 
   handleUserSpendInput(event){
-  const userEnergyInput = event.target.user_energy_input.value;
-  this.setState({userSpendInputFromForm: userEnergyInput});
+  const userSpendInput = event.target.user_energy_input.value;
+  this.setState({userSpendInputFromForm: userSpendInput});
 }
 
 
   render(){
-    console.log(this.state.userTurnoverInputFromForm);
-    console.log(this.state.userSpendInputFromForm);
     return(
       <div className='container-box-contents'>
         <FormView
           handleUserTurnoverInput={this.handleUserTurnoverInput}
           handleUserSpendInput={this.handleUserSpendInput}
+        />
+        <Calculations
+          turnover={this.state.userTurnoverInputFromForm}
+          energySpend={this.state.userSpendInputFromForm}
         />
 
       </div>

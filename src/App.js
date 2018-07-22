@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Calculations from './components/Calculations';
 import ContainerBox from './containers/ContainerBox';
 
 class App extends Component {
@@ -7,7 +6,6 @@ class App extends Component {
     return (
       <div>
         <ContainerBox />
-        <Calculations />
       </div>
     );
   }
