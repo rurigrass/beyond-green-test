@@ -1,5 +1,63 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:regular,bold,italic&subset=latin,latin-ext');
+
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
+  background: #965C8C;
+  color: snow;
+}
+
+a {
+  text-decoration: none;
+}
+
+h1 {
+  margin-top: 0;
+}
+
+h2 {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+button {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 5px;
+  border: none;
+}
+
+.header {
+  background: snow;
+}
+
+.header img {
+  padding: 10px 0px 10px 30px;
+}
+
+.container-box {
+  padding: 50px;
+}
+
+.form-queries {
+  margin-top: 5px;
+  /* margin-bottom: 5px; */
+}
+
+input, select {
+  margin-left: 10px;
+}
+
+#graph-container {
+  max-width: 700px;
+}
+
+.checkBoxes {
+  padding-top: 30px;
+}
+
+.checkBoxes h2 {
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
