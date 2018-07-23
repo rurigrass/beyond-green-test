@@ -1,76 +1,44 @@
-import React from "react";
-import Highcharts from 'highcharts';
+import React from 'react';
+import {BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts';
 
 class Co2GraphComponent extends React.Component {
   constructor(props){
     super(props);
     this.state = {
+      chartData:[{
+          name: 'Page A', uv: 0, pv: 0, amt: 0
+        }]
     };
-    // this.refreshChart = this.refreshChart.bind(this);
   }
 
-  // refreshChart(){
-  //   Highcharts.setOptions({
-  //     colors: ['#965C8C', '#FFC92B', '#548e2f']
-  //   });
-  //   Highcharts.chart('graph-container', {
-  //     chart: {
-  //       type: 'bar',
-  //       backgroundColor:'rgba(255, 255, 255, 0.8)'
-  //     },
-  //     title: {
-  //       text: this.props.totalCo2OverTurnover
-  //     },
-  //
-  //     subtitle: {
-  //       text: 'source: Beyond Green'
-  //     },
-  //
-  //     yAxis: {
-  //       title: {
-  //         text: 'Years to pay back'
-  //       }
-  //     },
-  //
-  //     xAxis: {
-  //       categories: null,
-  //       title: {
-  //         text: null
-  //       }
-  //     },
-  //
-  //     series:
-  //     [{
-  //       name: Object.keys(this.props.totalCo2OverTurnover),
-  //       data: Object.values(this.props.totalCo2OverTurnover)
-  //     } ,
-  //     ],
-  //
-  //     responsive: {
-  //       rules: [{
-  //         condition: {
-  //           maxWidth: 500
-  //         },
-  //         chartOptions: {
-  //           legend: {
-  //             layout: 'horizontal',
-  //             align: 'center',
-  //             verticalAlign: 'bottom'
-  //           }
-  //         }
-  //       }]
-  //     }
-  //   });
-  // }
-  //
-  render(){
-    console.log(this.props.totalCo2OverTurnover);
-    // this.refreshChart();
-    return(
-      <div id='graph-container'>
-      </div>
+  componentWillReceiveProps(newProps){
+    console.log("componentWillReceiveProps graph" );
+    // console.log("componentWillReceiveProps" + newProps);
+    const newState = {
+      chartData:[{
+          name: 'total TCO2e per Year Over £000 Turnover', uv: newProps.totalCo2OverTurnover, pv: 0.06, amt: 0.1
+        }]
+    };
+    this.setState(newState);
+  }
 
-    )
+  render () {
+    console.log("rendering co2graph graph" );
+
+    return (
+      <BarChart width={600} height={300} data={this.state.chartData}
+        // onClick={this.changeState}
+        margin={{top: 5, right: 30, left: 20, bottom: 5}}>
+        <XAxis dataKey="name"/>
+        <YAxis/>
+        <CartesianGrid strokeDasharray="3 3"/>
+        <Tooltip/>
+        <Legend />
+        <Bar dataKey="pv" fill="#8884d8" />
+        <Bar dataKey="uv" fill="#82ca9d" />
+      </BarChart>
+
+    );
   }
 }
 

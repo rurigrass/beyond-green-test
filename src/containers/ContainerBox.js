@@ -1,7 +1,6 @@
 import React from "react";
 import Calculations from '../components/Calculations';
 import FormView from '../components/FormView';
-// import Co2GraphComponent from '../components/Co2GraphComponent.js';
 
 class ContainerBox extends React.Component {
 

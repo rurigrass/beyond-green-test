@@ -5,8 +5,11 @@ class Calculations extends React.Component {
   constructor(props){
     super(props);
     this.state = {
+      getElectricityKWhYearPawel : null,
+      getElectricityKWhYearYang : null
     };
     this.getElectricitySpend = this.getElectricitySpend.bind(this);
+    // this.getElectricitySpendP = this.getElectricitySpendP.bind(this);
     this.getGasSpend = this.getGasSpend.bind(this);
     this.getElectricityKWhYear = this.getElectricityKWhYear.bind(this);
     this.getGasKWhYear = this.getGasKWhYear.bind(this);
@@ -20,6 +23,11 @@ class Calculations extends React.Component {
 
   getElectricitySpend() {
     const electricitySpend = this.props.energySpend * 0.3;
+    return electricitySpend;
+  }
+
+  getElectricitySpendP(energySpend) {
+    const electricitySpend = energySpend * 0.3;
     return electricitySpend;
   }
 
@@ -69,10 +77,25 @@ class Calculations extends React.Component {
     return totalTCO2eOverTurnover
   }
 
+componentWillReceiveProps(newProps){
+  console.log("componentWillReceiveProps" );
+  // console.log("componentWillReceiveProps" + newProps);
+  const newState = {
+    getElectricityKWhYearPawel : this.getElectricitySpend(newProps.turnover),
+    getElectricityKWhYearPawel : this.getElectricitySpendP(newProps.turnover),
+    getElectricityKWhYearPawel : this.getElectricitySpendP(newProps.turnover),
+    getElectricityKWhYearPawel : this.getElectricitySpendP(newProps.turnover),
+    getElectricityKWhYearPawel : this.getElectricitySpendP(newProps.turnover),
+    getElectricityKWhYearYang : this.getElectricitySpendP(newProps.turnover)
+  };
+  this.setState(newState);
+}
 
     render() {
+      console.log("rendering calculations" + this.props.turnover);
       return(
         <div>
+          <p>energy Pawel: {this.state.getElectricityKWhYearPawel}</p>
           <p>energy Spend: {this.props.energySpend}</p>
           <p>turnover: {this.props.turnover}</p>
           <p>electricity Spend: {this.getElectricitySpend()}</p>
