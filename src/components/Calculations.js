@@ -1,4 +1,5 @@
 import React from "react";
+import Co2GraphComponent from './Co2GraphComponent';
 
 class Calculations extends React.Component {
   constructor(props){
@@ -70,8 +71,6 @@ class Calculations extends React.Component {
 
 
     render() {
-      console.log(this.props.turnover);
-      console.log(this.props.energySpend);
       return(
         <div>
           <p>energy Spend: {this.props.energySpend}</p>
@@ -86,6 +85,7 @@ class Calculations extends React.Component {
           <p>gas TCO2e per Year: {this.getGasTCO2eYear()}</p>
           <p>total TCO2e per Year: {this.getTotalTCO2eYear()}</p>
           <p>total TCO2e per Year Over £'000 Turnover: {this.getTotalTCO2eOverPerThousandTurnover()}</p>
+          <Co2GraphComponent totalCo2OverTurnover={this.getTotalTCO2eOverPerThousandTurnover()}/>
         </div>
       )
     }
