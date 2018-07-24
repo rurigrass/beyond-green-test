@@ -5,12 +5,9 @@ class Calculations extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      getElectricityKWhYearPawel : null,
-      getElectricityKWhYearYang : null
+      electricitySpend: null,
+      gasSpend: null
     };
-    this.getElectricitySpend = this.getElectricitySpend.bind(this);
-    // this.getElectricitySpendP = this.getElectricitySpendP.bind(this);
-    this.getGasSpend = this.getGasSpend.bind(this);
     this.getElectricityKWhYear = this.getElectricityKWhYear.bind(this);
     this.getGasKWhYear = this.getGasKWhYear.bind(this);
     this.getElectricityKgCO2eYear = this.getElectricityKgCO2eYear.bind(this);
@@ -21,28 +18,23 @@ class Calculations extends React.Component {
     this.getTotalTCO2eOverPerThousandTurnover = this.getTotalTCO2eOverPerThousandTurnover.bind(this);
   }
 
-  getElectricitySpend() {
-    const electricitySpend = this.props.energySpend * 0.3;
-    return electricitySpend;
-  }
-
-  getElectricitySpendP(energySpend) {
+  getElectricitySpend(energySpend) {
     const electricitySpend = energySpend * 0.3;
     return electricitySpend;
   }
 
-  getGasSpend() {
-    const gasSpend = this.props.energySpend * 0.7;
+  getGasSpend(energySpend) {
+    const gasSpend = energySpend * 0.7;
     return gasSpend;
   }
 
   getElectricityKWhYear() {
-    const electricityKWhYear = this.getElectricitySpend() / 0.148;
+    const electricityKWhYear = this.state.electricitySpend / 0.148;
     return electricityKWhYear;
   }
 
   getGasKWhYear() {
-    const gasKWhYear = this.getGasSpend() / 0.0362;
+    const gasKWhYear = this.state.gasSpend / 0.0362;
     return gasKWhYear;
   }
 
@@ -77,41 +69,33 @@ class Calculations extends React.Component {
     return totalTCO2eOverTurnover
   }
 
-componentWillReceiveProps(newProps){
-  console.log("componentWillReceiveProps" );
-  // console.log("componentWillReceiveProps" + newProps);
-  const newState = {
-    getElectricityKWhYearPawel : this.getElectricitySpend(newProps.turnover),
-    getElectricityKWhYearPawel : this.getElectricitySpendP(newProps.turnover),
-    getElectricityKWhYearPawel : this.getElectricitySpendP(newProps.turnover),
-    getElectricityKWhYearPawel : this.getElectricitySpendP(newProps.turnover),
-    getElectricityKWhYearPawel : this.getElectricitySpendP(newProps.turnover),
-    getElectricityKWhYearYang : this.getElectricitySpendP(newProps.turnover)
-  };
-  this.setState(newState);
-}
+  componentWillReceiveProps(newProps){
+    const newState = {
+      electricitySpend: this.getElectricitySpend(newProps.energySpend),
+      gasSpend: this.getGasSpend(newProps.energySpend)
+    };
+    this.setState(newState);
+  }
 
-    render() {
-      console.log("rendering calculations" + this.props.turnover);
-      return(
-        <div>
-          <p>energy Pawel: {this.state.getElectricityKWhYearPawel}</p>
-          <p>energy Spend: {this.props.energySpend}</p>
-          <p>turnover: {this.props.turnover}</p>
-          <p>electricity Spend: {this.getElectricitySpend()}</p>
-          <p>gas Spend: {this.getGasSpend()}</p>
-          <p>electricity KWh per Year: {this.getElectricityKWhYear()}</p>
-          <p>gas KWh per Year: {this.getGasKWhYear()}</p>
-          <p>electricity KgCO2e per Year: {this.getElectricityKgCO2eYear()}</p>
-          <p>gas KgCO2e per Year: {this.getGasKgCO2eYear()}</p>
-          <p>electricity TCO2e per Year: {this.getElectricityTCO2eYear()}</p>
-          <p>gas TCO2e per Year: {this.getGasTCO2eYear()}</p>
-          <p>total TCO2e per Year: {this.getTotalTCO2eYear()}</p>
-          <p>total TCO2e per Year Over £'000 Turnover: {this.getTotalTCO2eOverPerThousandTurnover()}</p>
-          <Co2GraphComponent totalCo2OverTurnover={this.getTotalTCO2eOverPerThousandTurnover()}/>
-        </div>
-      )
-    }
+  render() {
+    return(
+      <div>
+        <p>energy Spend: {this.props.energySpend}</p>
+        <p>turnover: {this.props.turnover}</p>
+        <p>electricity Spend: {this.state.electricitySpend}</p>
+        <p>gas Spend: {this.state.gasSpend}</p>
+        <p>electricity KWh per Year: {this.getElectricityKWhYear()}</p>
+        <p>gas KWh per Year: {this.getGasKWhYear()}</p>
+        <p>electricity KgCO2e per Year: {this.getElectricityKgCO2eYear()}</p>
+        <p>gas KgCO2e per Year: {this.getGasKgCO2eYear()}</p>
+        <p>electricity TCO2e per Year: {this.getElectricityTCO2eYear()}</p>
+        <p>gas TCO2e per Year: {this.getGasTCO2eYear()}</p>
+        <p>total TCO2e per Year: {this.getTotalTCO2eYear()}</p>
+        <p>total TCO2e per Year Over £'000 Turnover: {this.getTotalTCO2eOverPerThousandTurnover()}</p>
+        <Co2GraphComponent totalCo2OverTurnover={this.getTotalTCO2eOverPerThousandTurnover()}/>
+      </div>
+    )
+  }
 }
 
 
