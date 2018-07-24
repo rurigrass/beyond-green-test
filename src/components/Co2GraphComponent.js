@@ -21,7 +21,6 @@ class Co2GraphComponent extends React.Component {
   }
 
   render () {
-    console.log(this.state.chartData);
     return (
       <BarChart width={600} height={300} data={this.state.chartData}
         margin={{top: 5, right: 30, left: 20, bottom: 5}}>
@@ -30,8 +29,8 @@ class Co2GraphComponent extends React.Component {
         <CartesianGrid strokeDasharray="3 3"/>
         <Tooltip/>
         <Legend />
-        <Bar dataKey="pv" fill="#8884d8" />
-        <Bar dataKey="uv" fill="#82ca9d" />
+        <Bar dataKey="Average" fill="#8884d8" />
+        <Bar dataKey="Yours" fill="#82ca9d" />
       </BarChart>
     );
   }
