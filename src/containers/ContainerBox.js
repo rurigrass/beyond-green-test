@@ -1,6 +1,7 @@
 import React from "react";
 import Calculations from '../components/Calculations';
 import FormView from '../components/FormView';
+import Slider from '../components/Slider';
 
 class ContainerBox extends React.Component {
 
@@ -29,6 +30,7 @@ class ContainerBox extends React.Component {
   render(){
     return(
       <div className='container-box-contents'>
+        <Slider />
         <FormView
           handleUserTurnoverInput={this.handleUserTurnoverInput}
           handleUserSpendInput={this.handleUserSpendInput}

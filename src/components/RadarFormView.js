@@ -12,12 +12,12 @@ const RadarFormView = (props) => {
   return(
       <form onSubmit={handleSubmit}>
         <div className='radar-form-queries'>
-          <label htmlFor='active_travel_input'>What's your everage percentage of Journeys By Active Travel ?</label>
+          <label htmlFor='active_travel_input'>What's your average percentage of Journeys By Active Travel ?</label>
           <input type='number' id='active_travel_input'/>
           <br/>
         </div>
         <div className='radar-form-queries'>
-          <label htmlFor='physical_activity_input'>What's your everage percentage of Physical Activiity ?</label>
+          <label htmlFor='physical_activity_input'>What's your average percentage of Physical Activity ?</label>
           <input type='number' id='physical_activity_input'/>
           <br/>
         </div>

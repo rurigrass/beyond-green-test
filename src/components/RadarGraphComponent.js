@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {Radar, RadarChart, PolarGrid, Legend,
   PolarAngleAxis, PolarRadiusAxis} from 'recharts';
 
@@ -26,8 +26,8 @@ import {Radar, RadarChart, PolarGrid, Legend,
     }
 
     render(){
-
       return (
+
         <RadarChart cx={300} cy={250} outerRadius={100} width={600} height={500} data={this.state.radarGraphData}>
           <PolarGrid />
           <PolarAngleAxis dataKey="subject" />
@@ -35,7 +35,6 @@ import {Radar, RadarChart, PolarGrid, Legend,
           <Radar name="Standard" dataKey="A" stroke="#8884d8" fill="#8884d8" fillOpacity={0.6}/>
           <Radar name="Yours" dataKey="B" stroke="#82ca9d" fill="#82ca9d" fillOpacity={0.6}/>
           <Legend />
-
         </RadarChart>
       );
     }
