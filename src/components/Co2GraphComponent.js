@@ -6,7 +6,7 @@ class Co2GraphComponent extends React.Component {
     super(props);
     this.state = {
       chartData:[{
-        name: '', uv: 0, pv: 0, amt: 0
+        name: '', Average: 0, Yours: 0, amt: 0
       }]
     };
   }
@@ -14,13 +14,14 @@ class Co2GraphComponent extends React.Component {
   componentWillReceiveProps(newProps){
     const newState = {
       chartData:[{
-        name: 'total TCO2e per Year Over £000 Turnover', uv: newProps.totalCo2OverTurnover, pv: 0.06, amt: 0.1
+        name: 'total TCO2e per Year Over £000 Turnover', Average: 0.06, Yours: newProps.totalCo2OverTurnover, amt: 0.1
       }]
     };
     this.setState(newState);
   }
 
   render () {
+    console.log(this.state.chartData);
     return (
       <BarChart width={600} height={300} data={this.state.chartData}
         margin={{top: 5, right: 30, left: 20, bottom: 5}}>

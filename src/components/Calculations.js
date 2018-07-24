@@ -5,9 +5,9 @@ class Calculations extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      electricitySpend: null,
-      gasSpend: null
     };
+    this.getElectricitySpend = this.getElectricitySpend.bind(this);
+    this.getGasSpend = this.getGasSpend.bind(this);
     this.getElectricityKWhYear = this.getElectricityKWhYear.bind(this);
     this.getGasKWhYear = this.getGasKWhYear.bind(this);
     this.getElectricityKgCO2eYear = this.getElectricityKgCO2eYear.bind(this);
@@ -18,23 +18,23 @@ class Calculations extends React.Component {
     this.getTotalTCO2eOverPerThousandTurnover = this.getTotalTCO2eOverPerThousandTurnover.bind(this);
   }
 
-  getElectricitySpend(energySpend) {
-    const electricitySpend = energySpend * 0.3;
+  getElectricitySpend() {
+    const electricitySpend = this.props.energySpend * 0.3;
     return electricitySpend;
   }
 
-  getGasSpend(energySpend) {
-    const gasSpend = energySpend * 0.7;
+  getGasSpend() {
+    const gasSpend = this.props.energySpend * 0.7;
     return gasSpend;
   }
 
   getElectricityKWhYear() {
-    const electricityKWhYear = this.state.electricitySpend / 0.148;
+    const electricityKWhYear = this.getElectricitySpend() / 0.148;
     return electricityKWhYear;
   }
 
   getGasKWhYear() {
-    const gasKWhYear = this.state.gasSpend / 0.0362;
+    const gasKWhYear = this.getGasSpend() / 0.0362;
     return gasKWhYear;
   }
 
@@ -69,21 +69,13 @@ class Calculations extends React.Component {
     return totalTCO2eOverTurnover
   }
 
-  componentWillReceiveProps(newProps){
-    const newState = {
-      electricitySpend: this.getElectricitySpend(newProps.energySpend),
-      gasSpend: this.getGasSpend(newProps.energySpend)
-    };
-    this.setState(newState);
-  }
-
   render() {
     return(
       <div>
         <p>energy Spend: {this.props.energySpend}</p>
         <p>turnover: {this.props.turnover}</p>
-        <p>electricity Spend: {this.state.electricitySpend}</p>
-        <p>gas Spend: {this.state.gasSpend}</p>
+        <p>electricity Spend: {this.getElectricitySpend()}</p>
+        <p>gas Spend: {this.getGasSpend()}</p>
         <p>electricity KWh per Year: {this.getElectricityKWhYear()}</p>
         <p>gas KWh per Year: {this.getGasKWhYear()}</p>
         <p>electricity KgCO2e per Year: {this.getElectricityKgCO2eYear()}</p>
