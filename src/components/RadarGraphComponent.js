@@ -16,6 +16,10 @@ import {Radar, RadarChart, PolarGrid, Legend,
       }
     }
 
+    onTitleClicked(event){
+      console.log(event);
+    }
+
     componentWillReceiveProps(newProps){
       const newState = {
         radarGraphData:[
@@ -34,14 +38,15 @@ import {Radar, RadarChart, PolarGrid, Legend,
 
         <RadarChart cx={300} cy={250} outerRadius={100} width={600} height={500} data={this.state.radarGraphData}>
           <PolarGrid />
-          <PolarAngleAxis dataKey="subject" />
-          <PolarRadiusAxis angle={90} domain={[0, 100]}/>
-          <Radar name="Average" dataKey="A" stroke="#8884d8" fill="#8884d8" fillOpacity={0.6}/>
-          <Radar name="Yours" dataKey="B" stroke="#82ca9d" fill="#82ca9d" fillOpacity={0.6}/>
-          <Legend />
-        </RadarChart>
-      );
+          <PolarAngleAxis dataKey="subject"
+            onClick={evt => this.onTitleClicked(evt)}/>
+            <PolarRadiusAxis angle={90} domain={[0, 100]}/>
+            <Radar name="Average" dataKey="A" stroke="#8884d8" fill="#8884d8" fillOpacity={0.6}/>
+            <Radar name="Yours" dataKey="B" stroke="#82ca9d" fill="#82ca9d" fillOpacity={0.6}/>
+            <Legend />
+          </RadarChart>
+        );
+      }
     }
-  }
 
-  export default RadarGraphComponent;
+    export default RadarGraphComponent;
