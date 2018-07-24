@@ -20,7 +20,7 @@ class RadarCalculations extends React.Component {
 
   totalCommunities() {
     var communitiesTotal = 0;
-    for(var i=0; i<3; i++){
+    for(var i=0; i<this.countCommunities(); i++){
       communitiesTotal = communitiesTotal + this.props.communitiesArray[i];
     }
     return communitiesTotal

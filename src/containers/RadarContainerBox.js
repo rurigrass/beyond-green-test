@@ -19,17 +19,17 @@ class RadarContainerBox extends React.Component {
   }
 
   handleActiveTravelInput(event){
-    const activeTravelInput = parseInt(event.target.active_travel_input.value);
+    const activeTravelInput = parseInt((event.target.active_travel_input.value), 10);
     this.setState({journeysByActiveTravel: activeTravelInput});
   }
 
   handlePhysicalActivityInput(event){
-    const physicalActivityInput = parseInt(event.target.physical_activity_input.value);
+    const physicalActivityInput = parseInt((event.target.physical_activity_input.value), 10);
     this.setState({adultsPhysicalActivity: physicalActivityInput});
   }
 
   handleGreenSpaceInput(event){
-    const greenSpaceInput = parseInt(event.target.green_space_input.value);
+    const greenSpaceInput = parseInt((event.target.green_space_input.value), 10);
     this.setState({accessToGreenSpace: greenSpaceInput});
   }
 

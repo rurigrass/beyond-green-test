@@ -7,9 +7,11 @@ import {Radar, RadarChart, PolarGrid, Legend,
       super(props);
       this.state = {
         radarGraphData:[
-          { subject: 'communities', A: 0, B: 0, fullMark: 100 },
-          { subject: 'physicalActivity', A: 0, B: 0, fullMark: 100 },
-          { subject: 'greenSpace', A: 0, B: 0, fullMark: 100 },
+          { subject: 'Communities', A: 0, B: 0, fullMark: 100 },
+          { subject: 'Economy', A: 0, B: 0, fullMark: 100 },
+          { subject: 'Education', A: 0, B: 0, fullMark: 100 },
+          { subject: 'Environment', A: 0, B: 0, fullMark: 100 },
+          { subject: 'Fair Work & Business', A: 0, B: 0, fullMark: 100 }
         ]
       }
     }
@@ -18,8 +20,10 @@ import {Radar, RadarChart, PolarGrid, Legend,
       const newState = {
         radarGraphData:[
           { subject: 'Communities', A: 50, B: newProps.communities , fullMark: 100 },
-          { subject: 'Economy', A: 50, B: 50, fullMark: 100 },
-          { subject: 'Education', A: 56, B: 50, fullMark: 100 }
+          { subject: 'Economy', A: 50, B: 30, fullMark: 100 },
+          { subject: 'Education', A: 50, B: 30, fullMark: 100 },
+          { subject: 'Environment', A: 50, B: 30, fullMark: 100 },
+          { subject: 'Fair Work & Business', A: 50, B: 30, fullMark: 100 }
         ]
       }
       this.setState(newState)
@@ -32,7 +36,7 @@ import {Radar, RadarChart, PolarGrid, Legend,
           <PolarGrid />
           <PolarAngleAxis dataKey="subject" />
           <PolarRadiusAxis angle={90} domain={[0, 100]}/>
-          <Radar name="Standard" dataKey="A" stroke="#8884d8" fill="#8884d8" fillOpacity={0.6}/>
+          <Radar name="Average" dataKey="A" stroke="#8884d8" fill="#8884d8" fillOpacity={0.6}/>
           <Radar name="Yours" dataKey="B" stroke="#82ca9d" fill="#82ca9d" fillOpacity={0.6}/>
           <Legend />
         </RadarChart>
