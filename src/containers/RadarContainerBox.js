@@ -13,36 +13,34 @@ class RadarContainerBox extends React.Component {
       adultsPhysicalActivity: null,
       accessToGreenSpace: null
     }
-    this.handleActiveTravelInput = this.handleActiveTravelInput.bind(this);
-    this.handlePhysicalActivityInput = this.handlePhysicalActivityInput.bind(this);
-    this.handleGreenSpaceInput = this.handleGreenSpaceInput.bind(this);
-  }
-
-  handleActiveTravelInput(event){
-    const activeTravelInput = parseInt((event.target.active_travel_input.value), 10);
-    this.setState({journeysByActiveTravel: activeTravelInput});
-  }
-
-  handlePhysicalActivityInput(event){
-    const physicalActivityInput = parseInt((event.target.physical_activity_input.value), 10);
-    this.setState({adultsPhysicalActivity: physicalActivityInput});
-  }
-
-  handleGreenSpaceInput(event){
-    const greenSpaceInput = parseInt((event.target.green_space_input.value), 10);
-    this.setState({accessToGreenSpace: greenSpaceInput});
+    this.handleActiveTravelSlider = this.handleActiveTravelSlider.bind(this);
+    this.handleActivePhysicalActivitySlider = this.handleActivePhysicalActivitySlider.bind(this);
+    this.handleAccessToGreenSpaceSlider = this.handleAccessToGreenSpaceSlider.bind(this);
   }
 
 
+  handleActiveTravelSlider(number){
+    this.setState({journeysByActiveTravel: number});
+  }
 
+  handleActivePhysicalActivitySlider(number){
+    this.setState({adultsPhysicalActivity: number})
+  }
+
+  handleAccessToGreenSpaceSlider(number){
+    this.setState({accessToGreenSpace: number})
+  }
 
   render(){
     return(
       <div className='container-radar-contents'>
         <RadarFormView
-          handleActiveTravelInput={this.handleActiveTravelInput}
-          handlePhysicalActivityInput={this.handlePhysicalActivityInput}
-          handleGreenSpaceInput={this.handleGreenSpaceInput}
+          handleActiveTravelSlider={this.handleActiveTravelSlider}
+          handleActivePhysicalActivitySlider={this.handleActivePhysicalActivitySlider}
+          handleAccessToGreenSpaceSlider={this.handleAccessToGreenSpaceSlider}
+          journeysByActiveTravelNumber={this.state.journeysByActiveTravel}
+          adultsPhysicalActivityNumber={this.state.adultsPhysicalActivity}
+          accessToGreenSpaceNumber={this.state.accessToGreenSpace}
         />
 
         <RadarCalculations

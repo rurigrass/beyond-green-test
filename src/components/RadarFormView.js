@@ -1,35 +1,35 @@
 import React from 'react';
+import Slider from 'rc-slider';
+import 'rc-slider/assets/index.css';
 
 const RadarFormView = (props) => {
 
-  function handleSubmit(event){
-    event.preventDefault();
-    props.handleActiveTravelInput(event);
-    props.handlePhysicalActivityInput(event);
-    props.handleGreenSpaceInput(event);
+  function handleActiveTravelChange(number){
+    props.handleActiveTravelSlider(number);
+  }
+
+  function handleActivePhysicalActivityChange(number){
+    props.handleActivePhysicalActivitySlider(number);
+  }
+
+  function handleAccessToGreenSpaceChange(number){
+    props.handleAccessToGreenSpaceSlider(number);
   }
 
   return(
-      <form onSubmit={handleSubmit}>
-        <div className='radar-form-queries'>
-          <label htmlFor='active_travel_input'>What's your average percentage of Journeys By Active Travel ?</label>
-          <input type='number' id='active_travel_input'/>
-          <br/>
-        </div>
-        <div className='radar-form-queries'>
-          <label htmlFor='physical_activity_input'>What's your average percentage of Physical Activity ?</label>
-          <input type='number' id='physical_activity_input'/>
-          <br/>
-        </div>
-        <div className='radar-form-queries'>
-          <label htmlFor='green_space_input'>What percentage you have access to Green Space ?</label>
-        <input type='number' id='green_space_input'/>
-          <br/>
-        </div>
-        <button type="submit" id="submit" value="submit">Submit</button>
-      </form>
-    )
+    <div id="sliders">
+      <span> Journeys by active Travel: %{props.journeysByActiveTravelNumber}
+        <Slider id="active_travel" type="range" style={{width: 300}} min={0} max={100} step={1} defaultValue={0} onChange={handleActiveTravelChange}
+        /></span>
+        <span> Percentage of adults doing physical activity: %{props.adultsPhysicalActivityNumber}
+          <Slider id="physical_activity" type="range" style={{width: 300}} min={0} max={100} step={1} defaultValue={0} onChange={handleActivePhysicalActivityChange}
+          /></span>
+          <span> access to green space %{props.accessToGreenSpaceNumber}
+            <Slider id="access_to_green_space" type="range" style={{width: 300}} min={0} max={100} step={1} defaultValue={0} onChange={handleAccessToGreenSpaceChange}
+            /></span>
+          </div>
+        )
 
-}
+      }
 
-export default RadarFormView;
+      export default RadarFormView;
