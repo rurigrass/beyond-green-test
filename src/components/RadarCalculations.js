@@ -8,34 +8,18 @@ class RadarCalculations extends React.Component {
     };
   }
 
-  communitiesData() {
-    // var communitiesCounter = 0;
-    // for( var i=0; i<3; i++){
-    //   if(this.props.communitiesArray[i]>0){
-    //     communitiesCounter++;
-    //   }
-    // }
-    // console.log("before filter" +this.props.communitiesArray);
+//COMMUNITIES
 
+  communitiesData() {
     return this.props.communitiesArray.filter(c => !isNaN(c) );
-    // 10 - keep
-    // 0 - keep
-    // NaN - don't keep
   }
 
   totalCommunities() {
-    // var communitiesTotal = 0;
-    // for(var i=0; i<this.countCommunities(); i++){
-    //   communitiesTotal = communitiesTotal + this.props.communitiesArray[i];
-    // }
-    // console.log("before filter "+this.props.communitiesArray);
     const commData = this.communitiesData();
     // console.log("after filter "+commData);
     const result = commData.reduce( (accumulator, currentValue) => accumulator + currentValue , 0);
     // console.log("after sum "+result);
-
     return result;
-
   }
 
   averageCommunities() {
@@ -44,11 +28,51 @@ class RadarCalculations extends React.Component {
     return average
   }
 
+//HEALTH
+
+  healthData() {
+    return this.props.healthArray.filter(c => !isNaN(c) );
+  }
+
+  totalHealth() {
+    const heaData = this.healthData();
+    const result = heaData.reduce( (accumulator, currentValue) => accumulator + currentValue , 0);
+    return result;
+  }
+
+  averageHealth() {
+    const average = this.totalHealth() / this.healthData().length;
+    // console.log(average);
+    return average
+  }
+
+//EDUCATION
+
+  educationData() {
+    return this.props.educationArray.filter(c => !isNaN(c) );
+  }
+
+  totalEducation() {
+    const eduData = this.educationData();
+    const result = eduData.reduce( (accumulator, currentValue) => accumulator + currentValue , 0);
+    return result;
+  }
+
+  averageEducation() {
+    const average = this.totalEducation() / this.educationData().length;
+    // console.log(average);
+    return average
+  }
+
+
+
+
+
   render() {
     // console.log(this.totalCommunities());
     return(
       <div>
-        <RadarGraphComponent communities={this.averageCommunities()}/>
+        <RadarGraphComponent communities={this.averageCommunities()} health={this.averageHealth()} education={this.averageEducation()}/>
       </div>
     )
   }
