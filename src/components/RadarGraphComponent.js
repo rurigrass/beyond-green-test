@@ -8,7 +8,6 @@ import {Radar, RadarChart, PolarGrid, Legend,
       this.state = {
         radarGraphData:[
           { subject: 'Communities', A: 0, B: 0, fullMark: 100 },
-          { subject: 'Economy', A: 0, B: 0, fullMark: 100 },
           { subject: 'Education', A: 0, B: 0, fullMark: 100 },
           { subject: 'Environment', A: 0, B: 0, fullMark: 100 },
           { subject: 'Fair Work & Business', A: 0, B: 0, fullMark: 100 },
@@ -25,10 +24,9 @@ import {Radar, RadarChart, PolarGrid, Legend,
       const newState = {
         radarGraphData:[
           { subject: 'Communities', A: 50, B: newProps.communities , fullMark: 100 },
-          { subject: 'Economy', A: 50, B: 30, fullMark: 100 },
           { subject: 'Education', A: 50, B: newProps.education, fullMark: 100 },
-          { subject: 'Environment', A: 50, B: 30, fullMark: 100 },
-          { subject: 'Fair Work & Business', A: 50, B: 30, fullMark: 100 },
+          { subject: 'Environment', A: 50, B: newProps.environment, fullMark: 100 },
+          { subject: 'Fair Work & Business', A: 50, B: newProps.fairWork, fullMark: 100 },
           { subject: 'Health', A: 50, B: newProps.health, fullMark: 100 }
         ]
       }

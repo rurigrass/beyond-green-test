@@ -64,15 +64,47 @@ class RadarCalculations extends React.Component {
     return average
   }
 
+//ENVIRONMENT
 
+environmentData() {
+  return this.props.environmentArray.filter(c => !isNaN(c) );
+}
 
+totalEnvironment() {
+  const envData = this.environmentData();
+  const result = envData.reduce( (accumulator, currentValue) => accumulator + currentValue , 0);
+  return result;
+}
 
+averageEnvironment() {
+  const average = this.totalEnvironment() / this.environmentData().length;
+  // console.log(average);
+  return average
+}
+
+//FAIR WORK AND BUSINESS
+
+fairWorkData() {
+  return this.props.fairWorkArray.filter(c => !isNaN(c) );
+}
+
+totalFairWork() {
+  const workData = this.fairWorkData();
+  const result = workData.reduce( (accumulator, currentValue) => accumulator + currentValue , 0);
+  return result;
+}
+
+averageFairWork() {
+  const average = this.totalFairWork() / this.fairWorkData().length;
+  // console.log(average);
+  return average
+}
 
   render() {
     // console.log(this.totalCommunities());
     return(
       <div>
-        <RadarGraphComponent communities={this.averageCommunities()} health={this.averageHealth()} education={this.averageEducation()}/>
+        <RadarGraphComponent communities={this.averageCommunities()} health={this.averageHealth()} education={this.averageEducation()} environment={this.averageEnvironment()} fairWork={this.averageFairWork()}/>
       </div>
     )
   }
